@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { DefaultLayout } from '@stacklycore/ui';
-import AuthContext from '@Src/hooks/authContext';
+import ContextAuth from 'hooks/contextAuth';
 
 type Props = {
   role?: string | string[];
 };
 
 const Default: FC<Props> = ({ children }) => (
-  <AuthContext>
+  <ContextAuth>
     <DefaultLayout>{children}</DefaultLayout>
-  </AuthContext>
+  </ContextAuth>
 );
 export default Default;
