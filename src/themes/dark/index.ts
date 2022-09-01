@@ -1,6 +1,6 @@
 import { IPalette } from '@stacklycore/ui';
 
-export const ThemeDark: IPalette = {
+const ThemeDark: IPalette = {
   button: {
     color: {
       primary: '#e52d27',
@@ -43,3 +43,5 @@ export const ThemeDark: IPalette = {
     track: '#e6e6e6'
   }
 };
+
+export default ThemeDark;

@@ -1,9 +1,12 @@
-import { FC } from 'react';
-import { AppPropsWithLayout } from 'next/app';
-import { ThemeLight } from '@Src/themes/light';
-import { ThemeDark } from '@Src/themes/dark';
-import { ThemeContext, CreateThemes, GlobalStyles } from '@stacklycore/ui';
-import LayoutContext from '@Src/layouts';
+import type { AppProps } from 'next/app';
+
+import { ThemeDark, ThemeLight } from 'themes';
+import {
+  CreateThemes,
+  DefaultLayout,
+  GlobalStyles,
+  ThemeContext
+} from '@stacklycore/ui';
 
 const themes = {
   light: ThemeLight,
@@ -12,15 +15,15 @@ const themes = {
 
 export const ThemesWithMachine = CreateThemes(themes);
 
-const _App: FC<AppPropsWithLayout> = ({ Component, pageProps, router }) => {
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
     <ThemeContext themes={ThemesWithMachine}>
-      <LayoutContext layout={Component.layout}>
+      <DefaultLayout>
         <GlobalStyles />
         <Component {...pageProps} key={router.pathname} />
-      </LayoutContext>
+      </DefaultLayout>
     </ThemeContext>
   );
 };
 
-export default _App;
+export default MyApp;

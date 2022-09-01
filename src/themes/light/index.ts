@@ -1,6 +1,7 @@
+import { css } from '@emotion/react';
 import { IPalette } from '@stacklycore/ui';
 
-export const ThemeLight: IPalette = {
+const ThemeLight: IPalette = {
   button: {
     color: {
       primary: '#3459A8',
@@ -14,7 +15,14 @@ export const ThemeLight: IPalette = {
       primary: '#fafafa',
       secondary: '#5a6a8a',
       accent: '#1461EB'
-    }
+    },
+    css: () => css`
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        background-color: red;
+      }
+    `
   },
   icon: {
     color: {
@@ -43,3 +51,5 @@ export const ThemeLight: IPalette = {
     track: '#e6e6e6'
   }
 };
+
+export default ThemeLight;
