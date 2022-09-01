@@ -1,4 +1,4 @@
-import { IPalette } from '@stacklycore/ui/build/core/styles/theme';
+import { IPalette } from '@stacklycore/ui';
 
 export const ThemeDark: IPalette = {
   button: {
