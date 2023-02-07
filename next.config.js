@@ -1,10 +1,13 @@
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: false
-// });
-
-module.exports = {
-  images: {
-    formats: ['image/avif', 'image/webp'],
-    domains: ['storage.googleapis.com']
-  }
+/** @type {import("next").NextConfig} */
+const config = {
+  reactStrictMode: true,
+  env: {
+    MONGODB_URI: process.env.MONGODB_URI
+  },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };
+
+module.exports = config;

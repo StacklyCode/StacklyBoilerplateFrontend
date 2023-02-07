@@ -1,19 +1,14 @@
-import { FC, useMemo } from 'react';
-import DEFAULT from './DEFAULT';
+import { LayoutComponentAtom } from "@/jotai/layouts";
+import { useAtomValue } from "jotai";
 
-export const AllLayouts = {
-  default: DEFAULT
+export type Props = {
+  children?: React.ReactNode;
 };
 
-export type LayoutType = {
-  layout?: keyof typeof AllLayouts;
-  role?: string | string[];
+const Layout = (props: Props) => {
+  const { children } = props;
+  const LayoutComponent = useAtomValue(LayoutComponentAtom);
+  return <LayoutComponent>{children}</LayoutComponent>;
 };
 
-const LayoutContext: FC<LayoutType> = (props) => {
-  const { layout, children, role } = props;
-  const GetLayout = useMemo(() => AllLayouts[layout || 'default'], [layout]);
-  return <GetLayout role={role}>{children}</GetLayout>;
-};
-
-export default LayoutContext;
+export default Layout;

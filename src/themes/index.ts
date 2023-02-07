@@ -1,2 +1,7 @@
-export { default as ThemeDark } from './dark';
-export { default as ThemeLight } from './light';
+import ThemeDark from "./Stackly/dark";
+import ThemeLight from "./Stackly/light";
+
+export const themes = {
+  "stackly-dark": ThemeDark,
+  "stackly-light": ThemeLight,
+};

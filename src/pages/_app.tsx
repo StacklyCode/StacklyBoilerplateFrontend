@@ -1,29 +1,27 @@
-import type { AppProps } from 'next/app';
+import Auth from "@/auth";
+import useAuthLayout from "@/hooks/useAuthLayout";
+import usePathname from "@/hooks/usePathname";
+import Layout from "@/layouts";
+import { themes } from "@/themes";
+import type { AppPropsWithLayout } from "@/types/next";
+import { GlobalStyles, LayoutNormalize } from "@stacklycore/ui";
 
-import { ThemeDark, ThemeLight } from 'themes';
-import {
-  CreateThemes,
-  DefaultLayout,
-  GlobalStyles,
-  ThemeContext
-} from '@stacklycore/ui';
+import { api } from "../utils/api";
 
-const themes = {
-  light: ThemeLight,
-  dark: ThemeDark
-};
+const MyApp = ({ Component, pageProps, router }: AppPropsWithLayout) => {
+  useAuthLayout({ layout: Component.layout, auth: Component.auth });
+  usePathname({ pathname: router.pathname });
 
-export const ThemesWithMachine = CreateThemes(themes);
-
-const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
-    <ThemeContext themes={ThemesWithMachine}>
-      <DefaultLayout>
-        <GlobalStyles />
-        <Component {...pageProps} key={router.pathname} />
-      </DefaultLayout>
-    </ThemeContext>
+    <LayoutNormalize defaultTheme="ryoshi-dark" themes={themes}>
+      <Auth>
+        <Layout>
+          <GlobalStyles />
+          <Component {...pageProps} key={router.pathname} />
+        </Layout>
+      </Auth>
+    </LayoutNormalize>
   );
 };
 
-export default MyApp;
+export default api.withTRPC(MyApp);

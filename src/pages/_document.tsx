@@ -1,13 +1,16 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import BackgroundFlash from "@/components/BackgroundFlash";
+import { Html, Head, Main, NextScript } from "next/document";
 
-const Document = () => (
-  <Html>
-    <Head />
-    <body>
-      <Main />
-      <NextScript />
-    </body>
-  </Html>
-);
-
-export default Document;
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+        <BackgroundFlash />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
